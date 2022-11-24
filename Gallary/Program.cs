@@ -1,5 +1,6 @@
 using Gallary.Data;
 using Gallary.Models;
+using Gallary.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -28,6 +29,7 @@ namespace Gallary
 
             builder.Services.AddAuthentication()
                 .AddIdentityServerJwt();
+            builder.Services.AddScoped<IImageManager, ImageManager>();
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
@@ -46,12 +48,12 @@ namespace Gallary
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles(
-                new StaticFileOptions
-                {
-                    FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.ContentRootPath, "Images")),
-                    RequestPath = "/Images"
-                });
+            app.UseStaticFiles();
+            app.UseFileServer(new FileServerOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.ContentRootPath, "Images")),
+                RequestPath = "/Images"
+            });
             app.UseRouting();
 
             app.UseAuthentication();

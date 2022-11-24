@@ -1,0 +1,12 @@
+<div style="position: relative;">
+  <mat-grid-list [cols]="colSize" >
+    <mat-grid-tile
+      *ngFor="let image of imageList"
+      [colspan]="1"
+      [rowspan]="1"
+    >
+    <ImageCard  [image]="image" [update]="update" [delete]="delete">
+    </ImageCard>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

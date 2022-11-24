@@ -1,0 +1,17 @@
+<div style="position: relative;" [class.mat-elevation-z8]="isActive">
+  <mat-card
+    (mouseover)="onHoverFun(true)"
+    (mouseleave)="onHoverFun(false)"
+    #tooltip="matTooltip"
+    [matTooltip]="tag"
+    matTooltipPosition="right"
+    matTooltipHideDelay="100"
+    style="position: relative; background-color: rgba(135, 128, 114, 0.571);"
+  >
+    <img mat-card-xl-image [src]="image.path" />
+    <mat-card-actions>
+      <button mat-button color="primary" *ngIf="onHover" (click)="onUpdate()">Update</button>
+      <button mat-button color="warn" *ngIf="onHover" (click)="onDelete()">Remove</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

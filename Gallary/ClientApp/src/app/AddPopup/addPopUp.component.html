@@ -1,0 +1,27 @@
+<div style="background-color: rgb(222, 159, 159);"><form class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Tag</mat-label>
+    <input matInput [(ngModel)]="image.tag" name="tag" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput [(ngModel)]="image.title" name="title" />
+  </mat-form-field>
+  <input
+    type="file"
+    accept="image/jpg"
+    class="custom-file-input"
+    id="customFile"
+    (change)="handleFileInput($any($event.target).files)"
+  />
+  <button
+    mat-raised-button
+    color="primary"
+    style="margin: 10px"
+    (click)="add()"
+  >
+    Add Image
+  </button>
+  <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+</form>
+</div>

@@ -6,8 +6,9 @@ namespace Gallary.Services
     {
         public Task<bool> addImage(Images image,IFormFile file);
         public Task<List<Images>> getImages(string UserId);
-        public bool updateImage(string image);
-        public bool deleteImage(int id);
+        public Task<bool> updateImage(Images image,IFormFile file);
+        public Task<bool> updateImageDetails(Images image);
+        public Task<bool> deleteImage(int id);
 
     }
 }
